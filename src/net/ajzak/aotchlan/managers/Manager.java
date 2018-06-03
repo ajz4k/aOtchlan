@@ -14,13 +14,11 @@ public class Manager {
     public static boolean opened = false;
     public static Inventory inv;
 
-
     static{
-        inv = Bukkit.createInventory(null, 54, Main.getInst().configManager.inventoryname);
+        inv = Bukkit.createInventory(null, 54, "§2§lOtchlan");
     }
 
     public static void clearItems(){
-
         inv.clear();
         for(World world : Bukkit.getWorlds()){
             for(Entity e : world.getEntities()){
@@ -31,7 +29,7 @@ public class Manager {
             }
         }
         opened = true;
-        Bukkit.broadcastMessage(Config.getInst().OTCHLAN_OPEN);
+        Bukkit.broadcastMessage(Settings.getInst().OTCHLAN_OPEN);
         Bukkit.getScheduler().runTaskLaterAsynchronously(Main.getInst(), () -> {
             opened = false;
             Bukkit.broadcastMessage(Settings.getInst().OTCHLAN_CLOSE);
